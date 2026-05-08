@@ -33,7 +33,7 @@ def get_service(port):
     return common_services.get(port, "Unknown")
 
 
-# Get hostname (bonus)
+# Get hostname
 def get_hostname(ip):
     try:
         # Special case for localhost

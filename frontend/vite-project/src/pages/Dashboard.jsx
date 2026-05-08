@@ -15,7 +15,7 @@ export default function Dashboard() {
     fetchFirewall().then(setFirewall);
   }, []);
 
-  // 🔥 Summary stats
+  // Summary stats
   const total = devices.length;
   const danger = cis.filter(c => c.status === "DANGER").length;
   const safe = total - danger;
@@ -28,12 +28,12 @@ export default function Dashboard() {
         Network Posture Dashboard
       </h1>
 
-      {/* 🔥 Scan Button (UI only for now) */}
+      {/*  Scan Button (UI only for now) */}
       <button className="bg-blue-600 px-4 py-2 rounded mb-6 hover:bg-blue-700">
         Scan Network
       </button>
 
-      {/* 🔥 Summary Cards */}
+      {/*  Summary Cards */}
       <div className="grid grid-cols-3 gap-4 mb-6">
         <div className="bg-gray-900 p-4 rounded-xl">
           <p>Total Devices</p>
