@@ -69,7 +69,6 @@ Each device is marked as:
 
 # Architecture Flow
 
-```text id="l9k3wt"
 Python Scanner
       ↓
 scan-results.json
@@ -108,6 +107,7 @@ The dashboard displays:
 4. CIS benchmark results
 5. Device risk summary
 
+---
 
 # PROJECT STRUCTURE
 
@@ -119,7 +119,6 @@ network-posture-scanner/
 ├── configs/
 ├── docs/
 └── README.md
-
 
 ---
 
