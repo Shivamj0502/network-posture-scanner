@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "ip": "192.168.0.1",
+    "hostname": "Unknown",
+    "open_ports": [
+      {
+        "port": 22,
+        "service": "SSH"
+      },
+      {
+        "port": 23,
+        "service": "Telnet"
+      },
+      {
+        "port": 80,
+        "service": "HTTP"
+      }
+    ],
+    "is_telnet_open": true
+  },
+  {
+    "ip": "127.0.0.1",
+    "hostname": "localhost",
+    "open_ports": [
+      {
+        "port": 8080,
+        "service": "HTTP-Alt"
+      },
+      {
+        "port": 3000,
+        "service": "Dev Server"
+      }
+    ],
+    "is_telnet_open": false
+  },
+  {
+    "ip": "192.168.0.2",
+    "hostname": "Unknown",
+    "open_ports": [
+      {
+        "port": 22,
+        "service": "SSH"
+      },
+      {
+        "port": 23,
+        "service": "Telnet"
+      },
+      {
+        "port": 80,
+        "service": "HTTP"
+      },
+      {
+        "port": 443,
+        "service": "HTTPS"
+      }
+    ],
+    "is_telnet_open": true
+  },
+  {
+    "ip": "192.168.0.7",
+    "hostname": "LAPTOP-MFLRBTED",
+    "open_ports": [
+      {
+        "port": 8080,
+        "service": "HTTP-Alt"
+      },
+      {
+        "port": 3000,
+        "service": "Dev Server"
+      }
+    ],
+    "is_telnet_open": false
+  }
+]

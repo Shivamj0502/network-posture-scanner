@@ -1,67 +1,48 @@
 # Network Posture Scanner
 
-A lightweight network posture and security assessment tool built to discover devices, identify exposed services, analyze firewall configurations, and run basic CIS-style security checks.
+A lightweight network posture and security assessment tool built to discover devices, detect exposed services, analyze firewall configurations, run CIS-style benchmark checks, and upload findings to AWS.
 
-The project is divided into three main parts:
-
-- Python-based network scanner
-- Node.js backend APIs
-- Frontend dashboard for visualization
-
-The goal of this project is to simulate how organizations can monitor exposed network services and detect common security risks inside a network environment.
+The project simulates how organizations monitor network exposure and identify common security risks inside internal environments.
 
 ---
 
 # Features
 
 ## Device Discovery
-- Scans a subnet or list of IP addresses
-- Detects reachable hosts
-- Performs lightweight TCP port scanning
-- Resolves hostnames when possible
+- Scan a subnet or list of IP addresses
+- Detect reachable hosts
+- Perform lightweight TCP port scanning
+- Resolve hostnames when possible
 
 ## Service Detection
-Detects commonly used services such as:
+Detects commonly exposed services such as:
 - SSH
 - Telnet
 - HTTP / HTTPS
 - FTP
 - MySQL
 - PostgreSQL
-- Flask / Development servers
 
-## Firewall Configuration Parsing
+## Firewall Analysis
 - Reads firewall configuration from a sample JSON file
 - Displays firewall rules in a readable format
 
 ## CIS-Style Security Checks
-Implemented benchmark checks include:
-
+Implemented checks include:
 - Telnet exposure detection
 - FTP exposure detection
-- HTTP exposed without HTTPS
-- Public database port exposure
+- HTTP without HTTPS
+- Public database exposure
 - Excessive open ports detection
 
 Each device is marked as:
 - SAFE
 - DANGER
 
-based on detected security issues.
-
-## REST APIs
-Backend APIs available:
-
-- `/devices`
-- `/firewall-rules`
-- `/cis-results`
-
-## Frontend Dashboard
-The frontend dashboard displays:
-- Discovered devices
-- Open ports and services
-- Firewall rules
-- CIS benchmark results
+## AWS Integration
+- Uploads scan findings to AWS DynamoDB
+- Uses IAM-based authentication
+- Backend securely communicates with AWS
 
 ---
 
@@ -78,12 +59,58 @@ The frontend dashboard displays:
 ## Frontend
 - React
 - Vite
+- Tailwind CSS
+
+## Cloud
+- AWS DynamoDB
+- AWS IAM
 
 ---
 
-# Project Structure
+# Architecture Flow
 
-```bash
+```text id="l9k3wt"
+Python Scanner
+      ↓
+scan-results.json
+      ↓
+Node.js Backend APIs
+      ↓
+AWS DynamoDB
+      ↓
+React Frontend Dashboard
+
+---
+
+# REST APIs
+
+## Get Devices
+GET /devices
+
+## Upload Devices To AWS
+POST /upload-devices
+
+## Get Firewall Rules
+GET /firewall-rules
+
+## Get CIS Results
+GET /cis-results
+
+---
+
+Frontend Dashboard
+
+The dashboard displays:
+
+1. Discovered devices
+2. Open ports and services
+3. Firewall rules
+4. CIS benchmark results
+5. Device risk summary
+
+
+# PROJECT STRUCTURE
+
 network-posture-scanner/
 │
 ├── scanner/
@@ -92,105 +119,65 @@ network-posture-scanner/
 ├── configs/
 ├── docs/
 └── README.md
-```
-
-# How the Project Works
-
-## Step 1: Network Scanning
-
-The Python scanner performs TCP-based port scanning on target IP addresses and identifies open services.
-
-The scan results are stored locally in:
-
-backend/src/data/scan-results.json
-
-## Step 2: Security Analysis
-
-The backend reads scan results and runs CIS-style security checks against discovered devices.
-
-## Step 3: API Layer
-
-Express APIs expose:
-
-discovered devices
-firewall rules
-benchmark results
-
-## Step 4: Frontend Dashboard
-
-The frontend fetches data from backend APIs and displays it in a readable dashboard.
 
 
-# AWS Architecture (Planned Extension)
+---
 
-The project was designed in a modular way so cloud integration can be added easily.
+# INSTALLATION
 
-## Planned AWS flow:
+## Clone Repository
 
-Scanner → API Gateway → AWS Lambda → DynamoDB / S3
-
-Current MVP stores scan results locally in JSON format for faster development and easier testing.
-
-## Future improvements may include:
-
-1. Secure cloud ingestion
-2. DynamoDB storage
-3. Real-time scan uploads
-4. Authentication using API keys
-5. Scheduled scans using AWS Lambda
-
-
-# Installation
-
-## Clone the Repository
-git clone <your-github-link>
+git clone <https://github.com/Shivamj0502/network-posture-scanner>
 cd network-posture-scanner
 
 ## Scanner Setup
+
 cd scanner
 pip install -r requirements.txt
 python scanner.py
 
 ## Backend Setup
+
 cd backend
 npm install
-npm start
+node server.js
 
-Backend runs on:
+## Backend runs on:
 
 http://localhost:3000
 
+
 ## Frontend Setup
+
 cd frontend
 npm install
 npm run dev
 
-## Sample API Endpoints
-### Get Devices
-GET /devices
+## Frontend runs on:
 
-### Get Firewall Rules
-GET /firewall-rules
+http://localhost:5173
 
-### Get CIS Results
-GET /cis-results
+---
 
-# Design Decisions
-1. Lightweight TCP scanning was used to keep the scanner fast and simple.
-2. JSON storage was used for MVP speed and easier debugging.
-3. Services and controllers were separated to maintain modular backend architecture.
-4. Common ports were prioritized to focus on realistic security exposure scenarios.
+# DESIGN DECISIONS
 
-# Future Improvements
-1. Real AWS integration
-2. Scheduled automated scans
-3. Docker support
-4. Authentication and authorization
-5. Advanced service fingerprinting
-6. CIDR subnet scanning
-7. Export reports in PDF/CSV format
+## Lightweight TCP scanning for simplicity and speed
+## Modular backend architecture using controllers/services/routes
+## JSON storage for fast MVP development and debugging
+## Backend-mediated AWS access for better security
 
+---
 
-# Author
+# FUTURE IMPROVEMENTS
 
+## CIDR subnet scanning
+## Real-time scan triggering
+## Scheduled scans
+## Docker support
+## Authentication & authorization
+## PDF / CSV report exporting
+
+---
+
+Author
 Shivam
