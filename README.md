@@ -178,6 +178,6 @@ http://localhost:5173
 
 ---
 
-# Author
+## Author
 
-## Shivam
+### Shivam
