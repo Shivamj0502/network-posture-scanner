@@ -45,7 +45,7 @@ for ip in ips:
                     "service": get_service(port)
                 })
 
-        # Only store hosts with open ports (current design choice)
+        # Only store hosts with open ports
         if len(open_ports) == 0:
             continue
 

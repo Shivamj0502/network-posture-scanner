@@ -36,13 +36,11 @@ def get_service(port):
 # Get hostname
 def get_hostname(ip):
     try:
-        # Special case for localhost
         if ip == "127.0.0.1":
             return "localhost"
 
         hostname = socket.gethostbyaddr(ip)[0]
 
-        # Extra safety: avoid nonsense mappings
         if hostname == ip:
             return "Unknown"
 
