@@ -68,7 +68,7 @@ Each device is marked as:
 ---
 
 # Architecture Flow
-
+```bash
 Python Scanner
       ↓
 scan-results.json
@@ -78,39 +78,38 @@ Node.js Backend APIs
 AWS DynamoDB
       ↓
 React Frontend Dashboard
+```
 
 ---
 
-# REST APIs
+## REST APIs
 
-## Get Devices
+- Get Devices
 GET /devices
 
-## Upload Devices To AWS
+- Upload Devices To AWS
 POST /upload-devices
 
-## Get Firewall Rules
+- Get Firewall Rules
 GET /firewall-rules
 
-## Get CIS Results
+- Get CIS Results
 GET /cis-results
 
 ---
 
-Frontend Dashboard
+## Frontend Dashboard
 
-The dashboard displays:
-
-1. Discovered devices
-2. Open ports and services
-3. Firewall rules
-4. CIS benchmark results
-5. Device risk summary
+- Discovered devices
+- Open ports and services
+- Firewall rules
+- CIS benchmark results
+- Device risk summary
 
 ---
 
 # PROJECT STRUCTURE
-
+```bash
 network-posture-scanner/
 │
 ├── scanner/
@@ -119,62 +118,63 @@ network-posture-scanner/
 ├── configs/
 ├── docs/
 └── README.md
+```
 
 ---
 
-# INSTALLATION
+## INSTALLATION
 
-## Clone Repository
+### Clone Repository
 
 git clone <https://github.com/Shivamj0502/network-posture-scanner>
 cd network-posture-scanner
 
-## Scanner Setup
+### Scanner Setup
 
 cd scanner
 pip install -r requirements.txt
 python scanner.py
 
-## Backend Setup
+### Backend Setup
 
 cd backend
 npm install
 node server.js
 
-## Backend runs on:
+### Backend runs on:
 
 http://localhost:3000
 
 
-## Frontend Setup
+### Frontend Setup
 
 cd frontend
 npm install
 npm run dev
 
-## Frontend runs on:
+### Frontend runs on:
 
 http://localhost:5173
 
 ---
 
-# DESIGN DECISIONS
+## DESIGN DECISIONS
 
-## Lightweight TCP scanning for simplicity and speed
-## Modular backend architecture using controllers/services/routes
-## JSON storage for fast MVP development and debugging
-## Backend-mediated AWS access for better security
+- Lightweight TCP scanning for simplicity and speed
+- Modular backend architecture using controllers/services/routes
+- JSON storage for fast MVP development and debugging
+- Backend-mediated AWS access for better security
 
 ---
 
-# FUTURE IMPROVEMENTS
+## FUTURE IMPROVEMENTS
 
-## CIDR subnet scanning
-## Real-time scan triggering
-## Scheduled scans
-## Docker support
-## Authentication & authorization
-## PDF / CSV report exporting
+- CIDR subnet scanning
+- Real-time scan triggering
+- Scheduled scans
+- Docker support
+- Authentication & authorization
+- PDF / CSV report exporting
 
 ---
 
